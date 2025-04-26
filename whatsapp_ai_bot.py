@@ -28,6 +28,8 @@ def bot():
 
     reply = response.choices[0].message.content
     msg.body(reply)
+    print(f"Loaded API Key: {openai.api_key}")
+
     return str(resp)
 
 
