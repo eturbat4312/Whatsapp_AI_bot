@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")  # Зөвхөн ингэж уншина.
 
 
 @app.route("/bot", methods=["POST"])
@@ -27,7 +27,6 @@ def bot():
 
     reply = response.choices[0].message.content
     msg.body(reply)
-
     return str(resp)
 
 
