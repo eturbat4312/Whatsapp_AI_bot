@@ -12,8 +12,11 @@ def bot():
     resp = MessagingResponse()
     msg = resp.message()
 
-    # ✨ ЭНД л client үүсгэнэ! ✨
+    # 🎯 OPENAI_API_KEY-г энд авна
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    if not OPENAI_API_KEY:
+        return "OpenAI API Key not set", 500
+
     client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
     response = client.chat.completions.create(
