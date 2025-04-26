@@ -5,10 +5,7 @@ import os
 
 app = Flask(__name__)
 
-# Түлхүүрийг энд уншина
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
 
 @app.route("/bot", methods=["POST"])
@@ -16,6 +13,9 @@ def bot():
     incoming_msg = request.values.get("Body", "").strip()
     resp = MessagingResponse()
     msg = resp.message()
+
+    # ТОЛГОЙ ДЭЭР БИШ, ФУНКЦИЙН ДОТОР ҮҮСГЭНЭ!!!
+    client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
