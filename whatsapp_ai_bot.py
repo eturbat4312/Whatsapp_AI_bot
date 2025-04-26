@@ -12,7 +12,7 @@ def bot():
     resp = MessagingResponse()
     msg = resp.message()
 
-    # OPENAI_API_KEY-г энд уншина
+    # Яг энд client-г үүсгэ
     client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     response = client.chat.completions.create(
