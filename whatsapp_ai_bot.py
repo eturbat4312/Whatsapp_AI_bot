@@ -5,7 +5,8 @@ import os
 
 app = Flask(__name__)
 
-openai.api_key = os.getenv("OPENAI_API_KEY")  # Environment variable-аас унших
+# OpenAI API key-г орчны хувьсагчаас авна
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 @app.route("/bot", methods=["POST"])
@@ -14,12 +15,13 @@ def bot():
     resp = MessagingResponse()
     msg = resp.message()
 
+    # OpenAI API руу хүсэлт явуулж байна
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {
                 "role": "system",
-                "content": "Чи хүүхдүүдэд тусалдаг найрсаг AI туслах байна.",
+                "content": "Чи мэргэжлийн, бизнесийн зөвлөгөө өгдөг найдвартай AI туслах байна. Хэрэглэгчийн асуултад тодорхой, үнэн зөв, бодитой, ойлгомжтой хариулт өг.",
             },
             {"role": "user", "content": incoming_msg},
         ],
@@ -31,5 +33,5 @@ def bot():
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # PORT автоматаар авна
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
