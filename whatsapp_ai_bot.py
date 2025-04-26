@@ -5,7 +5,8 @@ import os
 
 app = Flask(__name__)
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# Set your OpenAI API key
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 @app.route("/bot", methods=["POST"])
@@ -14,9 +15,8 @@ def bot():
     resp = MessagingResponse()
     msg = resp.message()
 
-    # New OpenAI API call for v1.x
-    client = openai.OpenAI(api_key=OPENAI_API_KEY)
-    response = client.chat.completions.create(
+    # Create a ChatCompletion
+    response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {
@@ -26,12 +26,12 @@ def bot():
             {"role": "user", "content": incoming_msg},
         ],
     )
-    reply = response.choices[0].message.content
+
+    reply = response["choices"][0]["message"]["content"]
     msg.body(reply)
     return str(resp)
 
 
 if __name__ == "__main__":
-    # app.run(port=5000)
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
