@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-# Бид энд API key-г шууд тохируулна
+# 🔥 ЭНЭ ШУУД ТОХИРУУЛАЛТЫГ ХИЙХ ЁСТОЙ 🔥
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
@@ -15,7 +15,7 @@ def bot():
     resp = MessagingResponse()
     msg = resp.message()
 
-    # Шууд openai.chat.completions.create ашиглана
+    # ШУУД openai ашиглана
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
