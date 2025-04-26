@@ -12,9 +12,7 @@ def bot():
     resp = MessagingResponse()
     msg = resp.message()
 
-    # ЯГ энд байх ёстой!
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-    client = openai.OpenAI(api_key=OPENAI_API_KEY)
+    client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
