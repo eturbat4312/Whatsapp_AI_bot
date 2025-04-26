@@ -1,0 +1,12 @@
+{
+    "build": {
+      "builder": "NIXPACKS",
+      "nixpacksPlan": {
+        "providers": ["python"]
+      }
+    },
+    "deploy": {
+      "startCommand": "python whatsapp_ai_bot.py"
+    }
+  }
+  
