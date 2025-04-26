@@ -1,11 +1,12 @@
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
-from openai import OpenAI
+import openai
 import os
 
 app = Flask(__name__)
 
-client = OpenAI()  # Шууд ингэж
+# Config OpenAI API key энд!!!
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 
 @app.route("/bot", methods=["POST"])
@@ -14,7 +15,7 @@ def bot():
     resp = MessagingResponse()
     msg = resp.message()
 
-    response = client.chat.completions.create(
+    response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {
