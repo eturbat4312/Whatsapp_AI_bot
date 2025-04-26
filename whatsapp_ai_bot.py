@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-# ЭНД openai.api_key-г шууд оноо
+# Зөв аргаар API key оноох
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
