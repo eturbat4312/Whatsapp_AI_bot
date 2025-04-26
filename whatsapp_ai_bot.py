@@ -29,6 +29,8 @@ def bot():
     reply = response.choices[0].message.content
     msg.body(reply)
     print(f"Loaded API Key: {openai.api_key}")
+    print(f"OPENAI_API_KEY from env: {os.getenv('OPENAI_API_KEY')}")
+    print(f"openai.api_key: {openai.api_key}")
 
     return str(resp)
 
