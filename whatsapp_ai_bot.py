@@ -5,8 +5,7 @@ import os
 
 app = Flask(__name__)
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-client = OpenAI(api_key=OPENAI_API_KEY)
+client = OpenAI()  # Шууд ингэж
 
 
 @app.route("/bot", methods=["POST"])
