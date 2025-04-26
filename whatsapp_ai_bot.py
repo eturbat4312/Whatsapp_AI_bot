@@ -5,8 +5,6 @@ import os
 
 app = Flask(__name__)
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
 
 @app.route("/bot", methods=["POST"])
 def bot():
@@ -14,7 +12,8 @@ def bot():
     resp = MessagingResponse()
     msg = resp.message()
 
-    # ТОЛГОЙ ДЭЭР БИШ, ФУНКЦИЙН ДОТОР ҮҮСГЭНЭ!!!
+    # ЯГ энд байх ёстой!
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
     response = client.chat.completions.create(
