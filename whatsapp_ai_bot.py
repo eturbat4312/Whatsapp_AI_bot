@@ -1,10 +1,11 @@
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 import openai
+import os
 
 app = Flask(__name__)
 
-OPENAI_API_KEY = "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"  # өөрийн API KEY-г энд тавина
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 
 @app.route("/bot", methods=["POST"])
